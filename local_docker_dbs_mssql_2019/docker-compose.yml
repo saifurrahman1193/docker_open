@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  central_db_mssql_2019:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: local-central-db-mssql-container-2019
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: P@ssword123
+    ports:
+      - "1433:1433"
+    networks:
+      - local_central_db_network
+    volumes:
+      - ./dbdata:/var/opt/mssql
+networks:
+  local_central_db_network:
+    external: true

@@ -1,0 +1,20 @@
+version: '3.3'
+services:
+  central_db_5.1.73:
+    image: vsamov/mysql-5.1.73:latest
+    container_name: local-central-db-container-5.1.73
+    environment:
+      # MYSQL_DATABASE: otl_erp
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./dbdata:/var/lib/mysql
+    ports:
+      - 3306:3306
+    networks:
+      - local_central_db_network
+networks:
+  local_central_db_network:
+    external: true
+

@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  mongo_db:
+    image: mongo
+    container_name: local-central-mongo-db-container
+    ports:
+      - "27017:27017"
+    restart: always
+    volumes:
+      - ./mongo_db:/data/db
+    networks:
+      - local_central_db_network
+networks:
+  local_central_db_network:
+    external: true
